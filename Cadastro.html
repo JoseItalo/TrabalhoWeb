@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> Livraria </title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+       
+        
+       
+  
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    
+    
+       <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+   
+    
+                
+        
+        <link href="estilo.css" rel="stylesheet" type="text/css">
+    </head>
+        <body style="background-image: url('images/bg.jpg');">
+      
+            <div class="container divD">   
+            
+            
+                <ul>
+                      <li><a class="active" href="index.html">Inicio</a></li>
+                      <li><a href="Cadastro.html">Cadastro</a></li>
+                      <li><a href="saibaMais.html">Sobre</a></li>
+                      <li><a href="Login.html">Login</a></li>
+                </ul>
+                
+               <div class="container">
+                    <div class="row divB">
+                      <img src="images/hero_bg_2.jpg">
+                    </div>
+                </div><br><br>
+                
+                <div class="container">
+              <div id="app">
+            <h2 class="text-center">{{title}}</h2>
+                <form action="index.html" method="post">
+    <fieldset>
+        <fieldset class="grupo">
+            <div class="campo">
+                <label for="nome">Livro</label>
+                <input type="text" id="livro" name="livro" style="width: 10em" value="" v-model="livro" required>
+            </div>
+            <div class="campo">
+                <label for="snome">Escritor</label>
+                <input type="text" id="escritor" name="escritor" style="width: 10em" value=""  v-model="escritor" required>
+            </div>
+        </fieldset>
+        <fieldset class="grupo">
+            
+            <div class="campo">
+                <label for="estado">Genero</label>
+                <select name="estado" id="estado" v-model="genero" required>
+                    <option value="">--</option>
+                    <option value="PR">Romance</option>
+                </select>
+            </div>
+        </fieldset>
+        <div class="campo">
+            <label for="mensagem">Resumo</label>
+            <textarea rows="6" style="width: 20em" id="mensagem" name="mensagem" v-model="resumo" required></textarea>
+        </div>
+        
+           
+        <button type="submit" class="btn btn-primary" v-on:click="checkForm"> Cadastrar </button><br>
+           
+          
+            <ul class="li">
+                <li class="li" v-for="error in errors">{{error}}</li>
+        </ul>
+                    </fieldset>
+                    </form>
+        </div>
+            </div><br><br>
+                
+            </div>
+                 
+                <script>
+                var app = new Vue({
+            el: "#app",
+            data: {
+                title: "Cadastro",
+                errors: [],
+                escritor: "",
+                livro: "",
+                genero: "",
+                resumo:"",
+            },
+            methods: {
+                checkForm: function(str){
+                    this.errors =[];
+                    if(!this.livro){
+                        this.errors.push('Ensira um livro!... ');
+                    }
+                    if(!this.escritor){
+                        this.errors.push('Ensira um escritor!... ');
+                    }if(!this.genero){
+                        this.errors.push('Ensira um Genero!... ');
+                    }if(!this.resumo){
+                        this.errors.push('Ensira um Resumo!... ');
+                    }
+                   
+                }
+                
+            }
+                    
+                })
+                    
+               
+                
+                
+                
+                
+                </script>
+           
+        </body>
+</html>
